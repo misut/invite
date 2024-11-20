@@ -223,13 +223,13 @@ function logError(f, args) {
 function __wbg_adapter_50(arg0, arg1, arg2) {
     _assertNum(arg0);
     _assertNum(arg1);
-    wasm.closure204_externref_shim(arg0, arg1, arg2);
+    wasm.closure222_externref_shim(arg0, arg1, arg2);
 }
 
 function __wbg_adapter_53(arg0, arg1) {
     _assertNum(arg0);
     _assertNum(arg1);
-    wasm._dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__ha1a7086bfb1eb5dd(arg0, arg1);
+    wasm._dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hdd4ad4b080327c2a(arg0, arg1);
 }
 
 function __wbg_adapter_56(arg0, arg1, arg2) {
@@ -780,6 +780,9 @@ function __wbg_get_imports() {
         _assertNum(ret);
         return ret;
     }, arguments) };
+    imports.wbg.__wbg_setbehavior_e58c14ac43ed56a1 = function() { return logError(function (arg0, arg1) {
+        arg0.behavior = __wbindgen_enum_ScrollBehavior[arg1];
+    }, arguments) };
     imports.wbg.__wbg_instanceof_HtmlSelectElement_66dfc08c717b1515 = function() { return logError(function (arg0) {
         let result;
         try {
@@ -957,9 +960,6 @@ function __wbg_get_imports() {
         const ret = arg0.isPrimary;
         _assertBoolean(ret);
         return ret;
-    }, arguments) };
-    imports.wbg.__wbg_setbehavior_e58c14ac43ed56a1 = function() { return logError(function (arg0, arg1) {
-        arg0.behavior = __wbindgen_enum_ScrollBehavior[arg1];
     }, arguments) };
     imports.wbg.__wbg_files_194ca113571d995f = function() { return logError(function (arg0) {
         const ret = arg0.files;
@@ -1357,11 +1357,11 @@ function __wbg_get_imports() {
         return ret;
     };
     imports.wbg.__wbindgen_closure_wrapper522 = function() { return logError(function (arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 205, __wbg_adapter_50);
+        const ret = makeMutClosure(arg0, arg1, 223, __wbg_adapter_50);
         return ret;
     }, arguments) };
     imports.wbg.__wbindgen_closure_wrapper524 = function() { return logError(function (arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 205, __wbg_adapter_53);
+        const ret = makeMutClosure(arg0, arg1, 223, __wbg_adapter_53);
         return ret;
     }, arguments) };
     imports.wbg.__wbindgen_closure_wrapper803 = function() { return logError(function (arg0, arg1, arg2) {
