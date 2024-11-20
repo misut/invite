@@ -1,9 +1,11 @@
+use components::entrance::Entrance;
 use dioxus::prelude::*;
 
 #[component]
 pub fn App() -> Element {
     // Build cool things ✌️
 
+    Entrance();
     rsx! {
         link { rel: "stylesheet", href: "main.css" }
         img { src: "header.svg", id: "header" }
