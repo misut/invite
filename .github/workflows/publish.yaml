@@ -12,5 +12,20 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: "Dioxus Deploy"
-        uses: DioxusLabs/deploy-action@0.1.1
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Install Dioxus-CLI
+        shell: bash
+        run: cargo install dioxus-cli
+
+      - name: Build Project
+        shell: bash
+        run: dx build --release && cp ./dist/index.html ./dist/404.html
+
+      - name: Deploy Project 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: ./dist
+          clean: false
