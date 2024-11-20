@@ -22,6 +22,10 @@ jobs:
         shell: bash
         run: cargo install dioxus-cli
 
+      - name: Setup Base Path
+        shell: bash
+        run: sed -i 's/# base_path/base_path/' ./Dioxus.toml
+
       - name: Build Project
         shell: bash
         run: dx build --release && cp ./dist/index.html ./dist/404.html
