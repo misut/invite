@@ -1,0 +1,16 @@
+name: Publish Github Page
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Dioxus Deploy"
+        uses: DioxusLabs/deploy-action@0.1.2
