@@ -37,7 +37,9 @@ watch_path = ["src", "assets"]
 style = []
 
 # Javascript code file
-script = []
+script = [
+  "//dapi.kakao.com/v2/maps/sdk.js?autoload=true&appkey=850d92aa29afbf5806173cc1985cbb67"
+]
 
 [web.resource.dev]
 
