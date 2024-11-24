@@ -1,40 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Gothic+A1:100,200,300,400,500,600,700,800,900');
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css");
+
 body {
-    background-color: #111216;
+  background-color: #485B48;
 }
 
-#main {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+.container-vertical {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 
-#links {
-    width: 400px;
-    text-align: left;
-    font-size: x-large;
-    color: white;
-    display: flex;
-    flex-direction: column;
+.font-title {
+  font-family: "Gothic A1", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui;
+  font-size: 3em;
+  font-weight: 900;
 }
 
-#links a {
-    color: white;
-    text-decoration: none;
-    margin-top: 20px;
-    margin: 10px;
-    border: white 1px solid;
-    border-radius: 5px;
-    padding: 10px;
+.font-subtitle {
+  font-family: "Gothic A1", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui;
+  font-size: 2em;
+  font-weight: 700;
 }
 
-#links a:hover {
-    background-color: #1f1f1f;
-    cursor: pointer;
-}
-
-#header {
-    max-width: 1200px;
+.font-body {
+  font-family: "Gothic A1", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui;
+  font-size: 1.5em;
+  font-weight: 100;
 }
