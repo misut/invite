@@ -12,7 +12,7 @@ pub fn Card() -> Element {
             p { class: "font-title margin-large", "송년회 초대장" }
             p { class: "font-body margin-small", "0000년 00월 00일 00:00" }
             p { class: "font-body margin-small", "경기도 성남시 분당구 00로 00" }
-            p { class: "font-subtitle margin-large", "장소" }
+            p { class: "font-comment margin-small", "* 주차는 할 수 없어요" }
             Map {}
         }
     }

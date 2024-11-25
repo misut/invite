@@ -34,6 +34,12 @@ body {
   font-weight: 100;
 }
 
+.font-comment {
+  font-family: "Gothic A1", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui;
+  font-size: 1.0em;
+  font-weight: 100;
+}
+
 .margin-large {
   margin: 3vh auto 3vh;
 }
