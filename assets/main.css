@@ -33,3 +33,15 @@ body {
   font-size: 1.5em;
   font-weight: 100;
 }
+
+.margin-large {
+  margin: 3vh;
+}
+
+.margin-medium {
+  margin: 2vh;
+}
+
+.margin-small {
+  margin: 1vh;
+}

@@ -5,12 +5,14 @@ pub fn Card() -> Element {
         div { class: "container-vertical",
             img {
                 id: "snowflake",
+                class: "margin-large",
                 src: "./snowflake.svg",
-                style: "margin: 50px; width: 20vh; height: 20vh"
+                style: "width: 20vh; height: 20vh"
             }
-            p { class: "font-title", "송년회 초대장" }
-            p { class: "font-body", "0000년 00월 00일 00:00" }
-            p { class: "font-subtitle", "장소" }
+            p { class: "font-title margin-large", "송년회 초대장" }
+            p { class: "font-body margin-small", "0000년 00월 00일 00:00" }
+            p { class: "font-body margin-small", "경기도 성남시 분당구 00로 00" }
+            p { class: "font-subtitle margin-large", "장소" }
             Map {}
         }
     }
