@@ -35,13 +35,13 @@ body {
 }
 
 .margin-large {
-  margin: 3vh;
+  margin: 3vh auto 3vh;
 }
 
 .margin-medium {
-  margin: 2vh;
+  margin: 2vh auto 2vh;
 }
 
 .margin-small {
-  margin: 1vh;
+  margin: 1vh auto 1vh;
 }
