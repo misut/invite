@@ -2,7 +2,8 @@ use dioxus::prelude::*;
 
 pub fn Card() -> Element {
     rsx! {
-        div { class: "container-vertical",
+        div { class: "container-vertical", id: "snow-container",
+            script { src: "./snowflake.js" }
             img {
                 id: "snowflake",
                 class: "margin-large",

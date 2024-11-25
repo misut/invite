@@ -30,7 +30,7 @@ body {
 
 .font-body {
   font-family: "Gothic A1", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui;
-  font-size: 1.5em;
+  font-size: 1.4em;
   font-weight: 100;
 }
 
@@ -50,4 +50,19 @@ body {
 
 .margin-small {
   margin: 1vh auto 1vh;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  /* background-color: white; */
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
 }
