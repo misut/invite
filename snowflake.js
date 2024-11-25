@@ -4,7 +4,7 @@ function createSnowflake () {
   const snowflake = document.createElement('img');
   snowflake.src = './snowflake.svg';
   snowflake.classList.add('snowflake');
-  snowflake.style.left = (Math.random() + 0.125) * window.innerWidth * 0.8 + 'px';
+  snowflake.style.left = (Math.random() + 0.0625) * window.innerWidth * 0.9 + 'px';
 
   const random = Math.random();
   var rotate = random * 360;
