@@ -19,7 +19,7 @@ function createSnowflake () {
 
   setTimeout(() => {
     snowflake.remove();
-  }, 9000);
+  }, 5000);
 }
 
 setInterval(createSnowflake, 200);
