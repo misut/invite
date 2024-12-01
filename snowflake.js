@@ -18,8 +18,13 @@ function createSnowflake () {
   snowContainer.appendChild(snowflake);
 
   setTimeout(() => {
-    snowflake.remove();
+    snowflake.style.opacity = 0.0;
+    snowflake.style.visibility = false;
   }, 5000);
+
+  setTimeout(() => {
+    snowflake.remove();
+  }, 10000);
 }
 
 setInterval(createSnowflake, 200);
