@@ -15,7 +15,7 @@ pub fn Login(mut props: LoginProps) -> Element {
     rsx! {
         form {
             class: "form-login",
-            onsubmit: move |event| {
+            onsubmit: move |_event| {
                 props.onlogin();
             },
 
