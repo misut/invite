@@ -5,7 +5,8 @@ body {
   background-color: #485B48;
 }
 
-.container-vertical {
+.container-vertical,
+.form-login {
   margin: 0;
   width: 100%;
   height: 100%;
@@ -14,6 +15,23 @@ body {
   justify-content: center;
   align-items: center;
   color: white;
+}
+
+.form-login {
+  border-radius: 10px;
+  background-color: #00000011;
+  margin-top: 100px;
+  padding: 30px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.input-label {
+  width: 240px;
+}
+
+.user-input {
+  width: 240px;
 }
 
 .font-title {

@@ -1,11 +1,17 @@
 use crate::components::card::Card;
+use crate::components::login::Login;
 use dioxus::prelude::*;
 
 #[component]
 pub fn App() -> Element {
     // Build cool things ✌️
+    let mut logged_in = use_signal(|| false);
     rsx! {
         link { rel: "stylesheet", href: "./main.css" }
-        Card {}
+        if !logged_in() {
+            Login { logged_in }
+        } else {
+            Card {}
+        }
     }
 }
