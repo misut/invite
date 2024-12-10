@@ -26,6 +26,12 @@ jobs:
         shell: bash
         run: sed -i 's/# base_path/base_path/' ./Dioxus.toml
 
+      - name: Check Secret
+        env:
+          INVITATION_CODE: ${{ secrets.INVITATION_CODE }}
+        shell: bash
+        run: if [ -z "$INVITATION_CODE" ]; then echo "INVITATION_CODE is not set" else echo "INVITATION_CODE is set" fi
+
       - name: Build Project
         env:
           INVITATION_CODE: ${{ secrets.INVITATION_CODE }}
