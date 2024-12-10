@@ -1,6 +1,7 @@
 use chrono::{DateTime, TimeZone, Utc};
 use chrono_tz::{Asia::Seoul, Tz};
 use dioxus::prelude::*;
+use std::cmp::min;
 
 #[derive(PartialEq, Clone, Props)]
 pub struct CardProps {
@@ -45,7 +46,7 @@ fn Map() -> Element {
         div {
             id: "map",
             class: "margin-large",
-            style: "border-radius: 10px; width: 30vh; height: 30vh;",
+            style: "border-radius: 10px; width: 300px; height: 300px;",
             script { src: asset!("./assets/map.js") }
         }
     }
@@ -64,7 +65,7 @@ impl ScheduleProps {
                 step += 1;
             }
         }
-        return step;
+        return min(step, (self.times().len() - 1) as i32);
     }
 
     fn times(&self) -> Vec<(DateTime<Tz>, &str)> {
@@ -112,13 +113,13 @@ fn Schedule(props: ScheduleProps) -> Element {
             for (foo , title) in props.times().iter() {
                 div { class: "container-horizontal",
                     p {
-                        class: "font-body schedule-cell",
+                        class: "font-body schedule-time",
                         style: "text-align: end;",
                         "{foo.format(HOUR_FORMAT).to_string()}"
                     }
-                    div { class: "schedule-cell" }
+                    div { style: "width: 80px;" }
                     p {
-                        class: "font-body schedule-cell",
+                        class: "font-body schedule-title",
                         style: "text-align: start;",
                         "{title}"
                     }
@@ -126,15 +127,15 @@ fn Schedule(props: ScheduleProps) -> Element {
             }
             div {
                 class: "container-vertical",
-                style: "position: absolute; width: fit-content; height: fit-content;",
+                style: "position: absolute; width: fit-content; height: fit-content; margin-right: 60px;",
                 div {
                     class: "vertical-line-passed",
-                    style: "height: {35+75*props.step()}px;"
+                    style: "height: {40+66*props.step()}px;"
                 }
                 div { class: "vertical-line-circle" }
                 div {
                     class: "vertical-line-remaining",
-                    style: "height: {565-75*props.step()}px;"
+                    style: "height: {510-66*props.step()}px;"
                 }
             }
         }

@@ -49,8 +49,13 @@ a:visited {
   height: fit-content;
 }
 
-.schedule-cell {
-  width: 200px;
+.schedule-time {
+  width: 80px;
+  height: 30px;
+}
+
+.schedule-title {
+  width: 140px;
   height: 30px;
 }
 
@@ -109,19 +114,19 @@ a:visited {
 
 .font-title {
   font-family: "Gothic A1", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui;
-  font-size: 3em;
+  font-size: 2.5em;
   font-weight: 900;
 }
 
 .font-subtitle {
   font-family: "Gothic A1", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui;
-  font-size: 2em;
+  font-size: 1.9em;
   font-weight: 700;
 }
 
 .font-body {
   font-family: "Gothic A1", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui;
-  font-size: 1.4em;
+  font-size: 1.1em;
   font-weight: 100;
 }
 
