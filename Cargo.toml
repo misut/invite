@@ -8,8 +8,21 @@ edition = "2021"
 
 [dependencies]
 
-dioxus = { version = "0.5", features = ["web"] }
+dioxus = { version = "0.6", features = ["web"] }
+dioxus-sdk = { version = "0.6", features = ["storage"]}
 
 # Debug
-dioxus-logger = "0.5.1"
+dioxus-logger = "0.6"
 manganis = "0.2.2"
+
+[profile]
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"

@@ -2,7 +2,7 @@ const snowContainer = document.getElementById('snow-container');
 
 function createSnowflake () {
   const snowflake = document.createElement('img');
-  snowflake.src = './snowflake.svg';
+  snowflake.src = './assets/snowflake.svg';
   snowflake.classList.add('snowflake');
   snowflake.style.left = (Math.random() + 0.0625) * window.innerWidth * 0.9 + 'px';
 
