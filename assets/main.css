@@ -18,6 +18,42 @@ a:visited {
   color: grey;
 }
 
+.vertical-line-passed {
+  border-left: 2px solid white;
+  left: 50%;
+  width: 1px;
+  height: 1px;
+}
+
+.vertical-line-circle {
+  background-color: white;
+  border-radius: 5px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+}
+
+.vertical-line-remaining {
+  border-left: 2px solid grey;
+  left: 50%;
+  width: 1px;
+  height: 1px;
+}
+
+.container-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+}
+
+.schedule-cell {
+  width: 200px;
+  height: 30px;
+}
+
 .container-vertical,
 .form-login {
   display: flex;
