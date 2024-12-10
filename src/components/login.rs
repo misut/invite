@@ -19,13 +19,23 @@ pub fn Login(mut props: LoginProps) -> Element {
                 props.onlogin();
             },
 
-            label { class: "input-label", r#for: "ldap", "LDAP" }
-            input { class: "user-input", r#type: "text", name: "ldap" }
+            p { class: "font-title margin-large", "?" }
 
-            label { class: "input-label", r#for: "code", "Invitation Code" }
-            input { class: "user-input", r#type: "password", name: "code" }
+            input {
+                class: "font-input user-input",
+                r#type: "text",
+                name: "ldap",
+                placeholder: "👤 LDAP"
+            }
 
-            input { r#type: "submit" }
+            input {
+                class: "font-input user-input",
+                r#type: "password",
+                name: "code",
+                placeholder: "🔒 Invitation Code"
+            }
+
+            input { class: "font-submit submit-button", r#type: "submit" }
         }
     }
 }
