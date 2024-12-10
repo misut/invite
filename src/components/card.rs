@@ -25,6 +25,10 @@ pub fn Card(props: CardProps) -> Element {
             p { class: "font-subtitle margin-medium", "날짜 및 위치" }
             p { class: "font-body margin-small", "2024년 12월 18일 18:00" }
             p { class: "font-body margin-small", "경기도 성남시 분당구 서현로357번길 6" }
+            p { class: "font-body margin-small",
+                "데일리파티룸 "
+                a { href: "https://place.map.kakao.com/1841089335", "[Link]" }
+            }
             p { class: "font-comment margin-small", "* 주차는 할 수 없어요" }
             Map {}
 

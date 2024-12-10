@@ -9,6 +9,15 @@ body {
   align-items: center;
 }
 
+a {
+  color: aliceblue;
+  text-decoration-line: none;
+}
+
+a:visited {
+  color: grey;
+}
+
 .container-vertical,
 .form-login {
   display: flex;
