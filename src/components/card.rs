@@ -1,3 +1,5 @@
+use chrono::{DateTime, TimeZone, Utc};
+use chrono_tz::{Asia::Seoul, Tz};
 use dioxus::prelude::*;
 
 #[derive(PartialEq, Clone, Props)]
@@ -17,9 +19,8 @@ pub fn Card(props: CardProps) -> Element {
                 style: "width: 20vh; height: 20vh"
             }
             p { class: "font-title margin-large", "송년회 초대장" }
-            p { class: "font-body margin-small",
-                "2024년 광고서버플랫폼개발 송년회에 초대합니다 {props.ldap}"
-            }
+            p { class: "font-body margin-small", "반가워요 {props.ldap}!" }
+            p { class: "font-body margin-small", "2024년 ASPD 송년회에 초대합니다" }
 
             div { class: "horizontal-line", aria_hidden: true }
             p { class: "font-subtitle margin-medium", "날짜 및 위치" }
@@ -34,7 +35,7 @@ pub fn Card(props: CardProps) -> Element {
 
             div { class: "horizontal-line", aria_hidden: true }
             p { class: "font-subtitle margin-medium", "스케줄" }
-            Schedule { step: 0 }
+            Schedule { now: Seoul.from_utc_datetime(&Utc::now().naive_local()) }
         }
     }
 }
@@ -52,114 +53,75 @@ fn Map() -> Element {
 
 #[derive(PartialEq, Clone, Props)]
 struct ScheduleProps {
-    step: i32,
+    now: DateTime<Tz>,
+}
+
+impl ScheduleProps {
+    fn step(&self) -> i32 {
+        let mut step = 0;
+        for (time, _title) in self.times() {
+            if time < self.now {
+                step += 1;
+            }
+        }
+        return step;
+    }
+
+    fn times(&self) -> Vec<(DateTime<Tz>, &str)> {
+        return vec![
+            (
+                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
+                "파티룸 예약 시간",
+            ),
+            (
+                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
+                "파티룸 예약 시간",
+            ),
+            (
+                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
+                "파티룸 예약 시간",
+            ),
+            (
+                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
+                "파티룸 예약 시간",
+            ),
+            (
+                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
+                "파티룸 예약 시간",
+            ),
+            (
+                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
+                "파티룸 예약 시간",
+            ),
+            (
+                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
+                "파티룸 예약 시간",
+            ),
+            (
+                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
+                "파티룸 예약 시간",
+            ),
+        ];
+    }
 }
 
 fn Schedule(props: ScheduleProps) -> Element {
+    const HOUR_FORMAT: &str = "%H:%M";
     rsx! {
         div { class: "container-vertical margin-large",
-            div { class: "container-horizontal",
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: end;",
-                    "18:00"
-                }
-                div { class: "schedule-cell" }
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: start;",
-                    "파티룸 예약 시간"
-                }
-            }
-            div { class: "container-horizontal",
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: end;",
-                    "18:00"
-                }
-                div { class: "schedule-cell" }
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: start;",
-                    "파티룸 예약 시간"
-                }
-            }
-            div { class: "container-horizontal",
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: end;",
-                    "18:00"
-                }
-                div { class: "schedule-cell" }
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: start;",
-                    "파티룸 예약 시간"
-                }
-            }
-            div { class: "container-horizontal",
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: end;",
-                    "18:00"
-                }
-                div { class: "schedule-cell" }
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: start;",
-                    "파티룸 예약 시간"
-                }
-            }
-            div { class: "container-horizontal",
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: end;",
-                    "18:00"
-                }
-                div { class: "schedule-cell" }
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: start;",
-                    "파티룸 예약 시간"
-                }
-            }
-            div { class: "container-horizontal",
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: end;",
-                    "18:00"
-                }
-                div { class: "schedule-cell" }
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: start;",
-                    "파티룸 예약 시간"
-                }
-            }
-            div { class: "container-horizontal",
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: end;",
-                    "18:00"
-                }
-                div { class: "schedule-cell" }
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: start;",
-                    "파티룸 예약 시간"
-                }
-            }
-            div { class: "container-horizontal",
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: end;",
-                    "18:00"
-                }
-                div { class: "schedule-cell" }
-                p {
-                    class: "font-body schedule-cell",
-                    style: "text-align: start;",
-                    "파티룸 예약 시간"
+            for (foo , title) in props.times().iter() {
+                div { class: "container-horizontal",
+                    p {
+                        class: "font-body schedule-cell",
+                        style: "text-align: end;",
+                        "{foo.format(HOUR_FORMAT).to_string()}"
+                    }
+                    div { class: "schedule-cell" }
+                    p {
+                        class: "font-body schedule-cell",
+                        style: "text-align: start;",
+                        "{title}"
+                    }
                 }
             }
             div {
@@ -167,12 +129,12 @@ fn Schedule(props: ScheduleProps) -> Element {
                 style: "position: absolute; width: fit-content; height: fit-content;",
                 div {
                     class: "vertical-line-passed",
-                    style: "height: {35+75*props.step}px;"
+                    style: "height: {35+75*props.step()}px;"
                 }
                 div { class: "vertical-line-circle" }
                 div {
                     class: "vertical-line-remaining",
-                    style: "height: {565-75*props.step}px;"
+                    style: "height: {565-75*props.step()}px;"
                 }
             }
         }

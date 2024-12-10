@@ -14,6 +14,8 @@ dioxus-sdk = { version = "0.6", features = ["storage"]}
 # Debug
 dioxus-logger = "0.6"
 manganis = "0.2.2"
+chrono = "0.4.39"
+chrono-tz = "0.10.0"
 
 [profile]
 
