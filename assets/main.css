@@ -11,6 +11,10 @@ body {
 
 .container-vertical,
 .form-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: white;
   margin: 0;
   width: 100%;

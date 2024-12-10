@@ -1,19 +1,24 @@
 use dioxus::prelude::*;
 
-pub fn Card() -> Element {
+#[derive(PartialEq, Clone, Props)]
+pub struct CardProps {
+    ldap: String,
+}
+
+pub fn Card(props: CardProps) -> Element {
     rsx! {
         div { class: "container-vertical", id: "snow-container",
-            script { src: "./snowflake.js" }
+            script { src: asset!("./assets/snowflake.js") }
             img {
                 id: "snowflake",
                 alt: "Snowflake",
                 class: "margin-large",
-                src: "./snowflake.svg",
+                src: asset!("./assets/snowflake.svg"),
                 style: "width: 20vh; height: 20vh"
             }
             p { class: "font-title margin-large", "송년회 초대장" }
             p { class: "font-body margin-small",
-                "2024년 광고서버개발플랫폼 송년회에 초대합니다"
+                "2024년 광고서버개발플랫폼 송년회에 초대합니다 {props.ldap}"
             }
 
             div { class: "horizontal-line", aria_hidden: true }
@@ -35,7 +40,7 @@ fn Map() -> Element {
             id: "map",
             class: "margin-large",
             style: "border-radius: 10px; width: 30vh; height: 30vh;",
-            script { src: "./map.js" }
+            script { src: asset!("./assets/map.js") }
         }
     }
 }
