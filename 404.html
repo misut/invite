@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>invite</title>
-  <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="UTF-8" />
-  <link rel="stylesheet" href="/maincssb73075e38e385d3e.css">
-
-</head>
-<body>
-  <div id="main"></div>
-  <script type="module">
-    import init from "/invite/assets/dioxus/invite.js";
-    init("/invite/assets/dioxus/invite_bg.wasm").then(wasm => {
-      if (wasm.__wbindgen_start == undefined) {
-        wasm.main();
-      }
-    });
-  </script>
+  <head>
+    <title>invite</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
   <script src="//dapi.kakao.com/v2/maps/sdk.js?autoload=true&appkey=850d92aa29afbf5806173cc1985cbb67"></script>
-
-</body>
+<link rel="preload" href="/invite/wasm/invite_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+            <link rel="preload" href="/invite/wasm/invite.js" as="script">
+            </head>
+  <body>
+    <div id="main"></div>
+  <script>
+            // We can't use a module script here because we need to start the script immediately when streaming
+            import("/invite/wasm/invite.js").then(
+                ({ default: init }) => {
+                init("/invite/wasm/invite_bg.wasm").then((wasm) => {
+                    if (wasm.__wbindgen_start == undefined) {
+                    wasm.main();
+                    }
+                });
+                }
+            );
+            </script>
+            
+            </body>
 </html>
