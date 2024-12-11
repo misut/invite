@@ -8,7 +8,72 @@ pub struct CardProps {
     ldap: String,
 }
 
+async fn check_team(ldap: &str) {
+    let team_one = option_env!("TEAM_ONE")
+        .or(Some("foo.one,bar.one,baz.one"))
+        .expect("$TEAM_ONE not set")
+        .split(",");
+    let team_two = option_env!("TEAM_TWO")
+        .or(Some("foo.two,bar.two,baz.two"))
+        .expect("$TEAM_TWO not set")
+        .split(",");
+    let team_three = option_env!("TEAM_THREE")
+        .or(Some("foo.three,bar.three,baz.three"))
+        .expect("$TEAM_THREE not set")
+        .split(",");
+    let team_four = option_env!("TEAM_FOUR")
+        .or(Some("foo.four,bar.four,baz.four"))
+        .expect("$TEAM_FOUR not set")
+        .split(",");
+
+    let mut team_number: usize = 0;
+    for (idx, team) in vec![team_one, team_two, team_three, team_four]
+        .iter_mut()
+        .enumerate()
+    {
+        match team.find(|&m| ldap == m) {
+            Some(_) => {
+                team_number = idx + 1;
+                break;
+            }
+            None => 0,
+        };
+    }
+    tracing::info!("team number {team_number}");
+
+    document::eval(
+        r#"
+            let hint = document.getElementById("hint");
+            let recv = await dioxus.recv();
+            console.log(typeof recv);
+            switch (recv) {
+            case 1:
+                hint.classList.add("team_one");
+                break;
+            case 2:
+                hint.classList.add("team_two");
+                break;
+            case 3:
+                hint.classList.add("team_three");
+                break;
+            case 4:
+                hint.classList.add("team_four");
+                break;
+            default:
+                hint.classList.add("team_none");
+            }
+        "#,
+    )
+    .send(team_number)
+    .unwrap();
+}
+
 pub fn Card(props: CardProps) -> Element {
+    let ldap = use_signal(|| props.ldap.clone());
+    spawn(async move {
+        check_team(&ldap()).await;
+    });
+
     rsx! {
         div { class: "container-vertical", id: "snow-container",
             script { src: asset!("./assets/snowflake.js") }
@@ -20,7 +85,10 @@ pub fn Card(props: CardProps) -> Element {
                 style: "width: 20vh; height: 20vh"
             }
             p { class: "font-title margin-large", "송년회 초대장" }
-            p { class: "font-body margin-small", "반가워요 {props.ldap}!" }
+            div { id: "hint",
+                p { class: "font-body margin-small", "반가워요 {props.ldap}!" }
+            }
+
             p { class: "font-body margin-small", "2024년 ASPD 송년회에 초대합니다" }
 
             div { class: "horizontal-line", aria_hidden: true }

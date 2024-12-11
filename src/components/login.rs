@@ -11,7 +11,7 @@ impl LoginProps {
             .or(Some("test"))
             .expect("$INVITATION_CODE not set");
         let expect_ldaps: Vec<&str> = option_env!("LDAP_LIST")
-            .or(Some("cheolsu.kim,yeonghee.kim"))
+            .or(Some("foo.one,foo.two,foo.three,foo.four"))
             .expect("$LDAP_LIST not set")
             .split(",")
             .collect();

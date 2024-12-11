@@ -41,6 +41,10 @@ jobs:
         env:
           INVITATION_CODE: ${{ secrets.INVITATION_CODE }}
           LDAP_LIST: ${{ secrets.LDAP_LIST }}
+          TEAM_ONE: ${{ secrets.TEAM_ONE }}
+          TEAM_TWO: ${{ secrets.TEAM_TWO }}
+          TEAM_THREE: ${{ secrets.TEAM_THREE }}
+          TEAM_FOUR: ${{ secrets.TEAM_FOUR }}
         shell: bash
         run: dx build --release && cp ./target/dx/invite/release/web/public/index.html ./target/dx/invite/release/web/public/404.html
 

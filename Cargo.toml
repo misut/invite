@@ -16,6 +16,7 @@ dioxus-logger = "0.6"
 manganis = "0.2.2"
 chrono = "0.4.39"
 chrono-tz = "0.10.0"
+tracing = "0.1.41"
 
 [profile]
 

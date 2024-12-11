@@ -18,6 +18,50 @@ a:visited {
   color: grey;
 }
 
+div.team_none,
+div.team_one,
+div.team_two,
+div.team_three,
+div.team_four {
+  background-color: transparent;
+  border-radius: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: fit-content;
+  height: fit-content;
+  transition: background-color 0.1s;
+  user-select: none;
+}
+
+.team_none:active {
+  background-color: aqua;
+}
+
+.team_one:active {
+  background-color: red;
+}
+
+.team_two:active {
+  background-color: green;
+}
+
+.team_three:active {
+  background-color: blue;
+}
+
+.team_four:active {
+  background-color: black;
+}
+
+.ldap {
+  background-color: transparent;
+  transition: background-color 1s;
+}
+
+.ldap:active {
+  background-color: red;
+}
+
 .vertical-line-passed {
   border-left: 2px solid white;
   left: 50%;
