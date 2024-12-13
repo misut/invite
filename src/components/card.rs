@@ -73,7 +73,7 @@ pub fn Card(props: CardProps) -> Element {
     });
 
     let mut now = use_signal(|| Seoul.from_utc_datetime(&Utc::now().naive_local()));
-    use_coroutine::<Coroutine<()>, _, _>(move |rx| async move {
+    use_coroutine::<Coroutine<()>, _, _>(move |_rx| async move {
         loop {
             async_std::task::sleep(Duration::from_secs(5)).await;
             now.set(Seoul.from_utc_datetime(&Utc::now().naive_local()));
