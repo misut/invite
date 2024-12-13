@@ -35,6 +35,7 @@ div.team_four {
 
 .team_none:active {
   background-color: aqua;
+  color: darkslategrey;
 }
 
 .team_one:active {
