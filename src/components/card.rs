@@ -1,7 +1,7 @@
 use chrono::{DateTime, TimeZone, Utc};
 use chrono_tz::{Asia::Seoul, Tz};
 use dioxus::prelude::*;
-use std::{cmp::min, thread::sleep, time::Duration};
+use std::{cmp::min, time::Duration};
 
 #[derive(PartialEq, Clone, Props)]
 pub struct CardProps {
@@ -39,13 +39,11 @@ async fn check_team(ldap: &str) {
             None => 0,
         };
     }
-    tracing::info!("team number {team_number}");
 
     document::eval(
         r#"
             let hint = document.getElementById("hint");
             let recv = await dioxus.recv();
-            console.log(typeof recv);
             switch (recv) {
             case 1:
                 hint.classList.add("team_one");
@@ -75,10 +73,10 @@ pub fn Card(props: CardProps) -> Element {
     });
 
     let mut now = use_signal(|| Seoul.from_utc_datetime(&Utc::now().naive_local()));
-    spawn(async move {
+    use_coroutine::<Coroutine<()>, _, _>(move |rx| async move {
         loop {
+            async_std::task::sleep(Duration::from_secs(5)).await;
             now.set(Seoul.from_utc_datetime(&Utc::now().naive_local()));
-            sleep(Duration::from_millis(5000));
         }
     });
 
@@ -112,7 +110,7 @@ pub fn Card(props: CardProps) -> Element {
 
             div { class: "horizontal-line", aria_hidden: true }
             p { class: "font-subtitle margin-medium", "스케줄" }
-            Schedule { now: now() }
+            Schedule { now: *now.read_unchecked() }
         }
     }
 }
