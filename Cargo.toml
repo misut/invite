@@ -17,8 +17,7 @@ manganis = "0.2.2"
 chrono = "0.4.39"
 chrono-tz = "0.10.0"
 tracing = "0.1.41"
-
-[profile]
+async-std = "1.13.0"
 
 [profile.wasm-dev]
 inherits = "dev"

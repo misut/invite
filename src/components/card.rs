@@ -1,7 +1,7 @@
 use chrono::{DateTime, TimeZone, Utc};
 use chrono_tz::{Asia::Seoul, Tz};
 use dioxus::prelude::*;
-use std::cmp::min;
+use std::{cmp::min, time::Duration};
 
 #[derive(PartialEq, Clone, Props)]
 pub struct CardProps {
@@ -39,13 +39,11 @@ async fn check_team(ldap: &str) {
             None => 0,
         };
     }
-    tracing::info!("team number {team_number}");
 
     document::eval(
         r#"
             let hint = document.getElementById("hint");
             let recv = await dioxus.recv();
-            console.log(typeof recv);
             switch (recv) {
             case 1:
                 hint.classList.add("team_one");
@@ -72,6 +70,14 @@ pub fn Card(props: CardProps) -> Element {
     let ldap = use_signal(|| props.ldap.clone());
     spawn(async move {
         check_team(&ldap()).await;
+    });
+
+    let mut now = use_signal(|| Seoul.from_utc_datetime(&Utc::now().naive_local()));
+    use_coroutine::<Coroutine<()>, _, _>(move |rx| async move {
+        loop {
+            async_std::task::sleep(Duration::from_secs(5)).await;
+            now.set(Seoul.from_utc_datetime(&Utc::now().naive_local()));
+        }
     });
 
     rsx! {
@@ -104,7 +110,7 @@ pub fn Card(props: CardProps) -> Element {
 
             div { class: "horizontal-line", aria_hidden: true }
             p { class: "font-subtitle margin-medium", "스케줄" }
-            Schedule { now: Seoul.from_utc_datetime(&Utc::now().naive_local()) }
+            Schedule { now: *now.read_unchecked() }
         }
     }
 }
@@ -140,35 +146,31 @@ impl ScheduleProps {
         return vec![
             (
                 Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
-                "파티룸 예약 시간",
+                "시작",
             ),
             (
-                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
-                "파티룸 예약 시간",
+                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 30, 0).unwrap(),
+                "아이스브레이킹",
             ),
             (
-                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
-                "파티룸 예약 시간",
+                Seoul.with_ymd_and_hms(2024, 12, 18, 19, 0, 0).unwrap(),
+                "선물 쟁탈전",
             ),
             (
-                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
-                "파티룸 예약 시간",
+                Seoul.with_ymd_and_hms(2024, 12, 18, 20, 0, 0).unwrap(),
+                "배 채우기",
             ),
             (
-                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
-                "파티룸 예약 시간",
+                Seoul.with_ymd_and_hms(2024, 12, 18, 20, 30, 0).unwrap(),
+                "연말 결산",
             ),
             (
-                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
-                "파티룸 예약 시간",
+                Seoul.with_ymd_and_hms(2024, 12, 18, 21, 10, 0).unwrap(),
+                "끝 인사",
             ),
             (
-                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
-                "파티룸 예약 시간",
-            ),
-            (
-                Seoul.with_ymd_and_hms(2024, 12, 18, 18, 0, 0).unwrap(),
-                "파티룸 예약 시간",
+                Seoul.with_ymd_and_hms(2024, 12, 18, 21, 30, 0).unwrap(),
+                "종료",
             ),
         ];
     }
@@ -198,12 +200,12 @@ fn Schedule(props: ScheduleProps) -> Element {
                 style: "position: absolute; width: fit-content; height: fit-content; margin-right: 60px;",
                 div {
                     class: "vertical-line-passed",
-                    style: "height: {40+66*props.step()}px;"
+                    style: "height: {50+65*props.step()}px;"
                 }
                 div { class: "vertical-line-circle" }
                 div {
                     class: "vertical-line-remaining",
-                    style: "height: {510-66*props.step()}px;"
+                    style: "height: {450-65*props.step()}px;"
                 }
             }
         }
