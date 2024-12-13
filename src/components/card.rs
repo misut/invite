@@ -88,11 +88,13 @@ pub fn Card(props: CardProps) -> Element {
                 alt: "Snowflake",
                 class: "margin-large",
                 src: asset!("./assets/snowflake.svg"),
-                style: "width: 20vh; height: 20vh"
+                style: "width: 20vh; height: 20vh",
             }
             p { class: "font-title margin-large", "송년회 초대장" }
-            div { id: "hint",
-                p { class: "font-body margin-small", "반가워요 {props.ldap}!" }
+            div { id: "hint", ontouchstart: |_| (),
+                p { class: "font-body margin-small", ontouchstart: |_| (),
+                    "반가워요 {props.ldap}!"
+                }
             }
 
             p { class: "font-body margin-small", "2024년 ASPD 송년회에 초대합니다" }
@@ -200,12 +202,12 @@ fn Schedule(props: ScheduleProps) -> Element {
                 style: "position: absolute; width: fit-content; height: fit-content; margin-right: 60px;",
                 div {
                     class: "vertical-line-passed",
-                    style: "height: {50+65*props.step()}px;"
+                    style: "height: {50+65*props.step()}px;",
                 }
                 div { class: "vertical-line-circle" }
                 div {
                     class: "vertical-line-remaining",
-                    style: "height: {450-65*props.step()}px;"
+                    style: "height: {450-65*props.step()}px;",
                 }
             }
         }
